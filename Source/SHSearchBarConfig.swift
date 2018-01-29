@@ -31,7 +31,7 @@ public struct SHSearchBarConfig {
     public var textContentType: String? = nil
 
     /// Controls the visibility of the cancel button
-    public var useCancelButton: Bool = true
+    public var useCancelButton: Bool = false
 
     /// The title of the cancel button.
     public var cancelButtonTitle: String = NSLocalizedString("sb.general.cancel", comment: "")
