@@ -73,17 +73,22 @@ public class SHSearchBar: UIView, SHSearchBarDelegate {
      * - parameter config: The initial SHSearchBarConfig object.
      */
     public init(config: SHSearchBarConfig) {
+        self.config = config
+        self.textField = SHSearchBarTextField(config: config)
+        
         super.init(frame: CGRect.zero)
         commonInit(config: config)
     }
     
     required public init?(coder aDecoder: NSCoder) {
+        self.config = SHSearchBarConfig()
+        self.textField = SHSearchBarTextField(config: config)
+        
         super.init(coder: aDecoder)
         commonInit(config: SHSearchBarConfig())
     }
     
     func commonInit(config: SHSearchBarConfig) {
-        textField = SHSearchBarTextField(config: config)
         delegate = self
         translatesAutoresizingMaskIntoConstraints = false
         
