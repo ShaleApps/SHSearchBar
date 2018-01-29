@@ -73,24 +73,30 @@ public class SHSearchBar: UIView, SHSearchBarDelegate {
      * - parameter config: The initial SHSearchBarConfig object.
      */
     public init(config: SHSearchBarConfig) {
-        self.config = config
-        self.textField = SHSearchBarTextField(config: config)
-
         super.init(frame: CGRect.zero)
-
-        self.delegate = self
+        commonInit(config: config)
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commonInit(config: SHSearchBarConfig())
+    }
+    
+    func commonInit(config: SHSearchBarConfig) {
+        textField = SHSearchBarTextField(config: config)
+        delegate = self
         translatesAutoresizingMaskIntoConstraints = false
-
+        
         setupBackgroundView(withConfig: config)
         setupTextField(withConfig: config)
         setupCancelButton(withConfig: config)
-
+        
         backgroundView.addSubview(textField)
         addSubview(cancelButton)
         addSubview(backgroundView)
-
+        
         updateViewConstraints()
-
+        
         updateUserInterface()
     }
 
@@ -118,10 +124,6 @@ public class SHSearchBar: UIView, SHSearchBarDelegate {
         cancelButton.reversesTitleShadowWhenHighlighted = true
         cancelButton.adjustsImageWhenHighlighted = true
         cancelButton.addTarget(self, action: #selector(pressedCancelButton(_:)), for: .touchUpInside)
-    }
-    
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 
     func updateViewConstraints() {
