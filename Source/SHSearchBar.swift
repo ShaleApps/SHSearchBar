@@ -12,7 +12,7 @@ import UIKit
  * The central searchbar class of this framework. 
  * You must initialize this class using an instance of SHSearchBarConfig which is also changable later.
  */
-public class SHSearchBar: UIView, SHSearchBarDelegate {
+open class SHSearchBar: UIView, SHSearchBarDelegate {
     /// The content of this property is used to restore the textField text after cancellation
     var textBeforeEditing: String?
 
@@ -171,25 +171,25 @@ public class SHSearchBar: UIView, SHSearchBarDelegate {
 
     // MARK: - First Responder Handling
 
-    public override var isFirstResponder: Bool {
+    open override var isFirstResponder: Bool {
         return textField.isFirstResponder
     }
 
     @discardableResult
-    public override func resignFirstResponder() -> Bool {
+    open override func resignFirstResponder() -> Bool {
         return textField.resignFirstResponder()
     }
 
     @discardableResult
-    public override func becomeFirstResponder() -> Bool {
+    open override func becomeFirstResponder() -> Bool {
         return textField.becomeFirstResponder()
     }
 
-    public override var canResignFirstResponder: Bool {
+    open override var canResignFirstResponder: Bool {
         return textField.canResignFirstResponder
     }
 
-    public override var canBecomeFirstResponder: Bool {
+    open override var canBecomeFirstResponder: Bool {
         return textField.canBecomeFirstResponder
     }
 
