@@ -16,13 +16,13 @@ public struct SHSearchBarConfig {
     public var rasterSize: CGFloat = 11.0
 
     /// The attributes to format the searchbars text.
-    public var textAttributes: [NSAttributedStringKey : Any] = [.foregroundColor : defaultTextForegroundColor]
+	public var textAttributes: [NSAttributedString.Key : Any] = [.foregroundColor : defaultTextForegroundColor]
 
     /// Convenience computed property because UITextField.defaultTextAttributes require `[String:Any]`.
-    public static func convert(textAttributes: [NSAttributedStringKey: Any]) -> [String: Any] {
-        var attributes: [String: Any] = [:]
+	public static func convert(textAttributes: [NSAttributedString.Key: Any]) -> [NSAttributedString.Key: Any] {
+        var attributes: [NSAttributedString.Key: Any] = [:]
         for attr in textAttributes {
-            attributes[attr.key.rawValue] = attr.value
+            attributes[attr.key] = attr.value
         }
         return attributes
     }
@@ -37,22 +37,22 @@ public struct SHSearchBarConfig {
     public var cancelButtonTitle: String = NSLocalizedString("sb.general.cancel", comment: "")
 
     /// The text attributes to style the cancel button.
-    public var cancelButtonTextAttributes: [NSAttributedStringKey : Any] = [.foregroundColor : defaultTextForegroundColor]
+	public var cancelButtonTextAttributes: [NSAttributedString.Key : Any] = [.foregroundColor : defaultTextForegroundColor]
 
     /// The left accessory view of the searchbar. For searchbars there is typically a search glass.
     public var leftView: UIView? = nil
 
     /// The left view mode of the searchbar regarding to a leftView.
-    public var leftViewMode: UITextFieldViewMode = .never
+	public var leftViewMode: UITextField.ViewMode = .never
 
     /// The right accessory view of the searchbar. For searchbars there is typically a search glass.
     public var rightView: UIView? = nil
 
     /// The right view mode of the searchbar regarding to a rightView.
-    public var rightViewMode: UITextFieldViewMode = .always
+	public var rightViewMode: UITextField.ViewMode = .always
 
     /// Controls when to show the clear button.
-    public var clearButtonMode: UITextFieldViewMode = .whileEditing
+	public var clearButtonMode: UITextField.ViewMode = .whileEditing
 
     // MARK: - Lifecycle
 
